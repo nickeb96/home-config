@@ -1,0 +1,14 @@
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.bk
+
+# binary artifacts
+*.o
+*.a
+*.lib
+*.dylib
+*.so

@@ -1,0 +1,13 @@
+[user]
+	Name = nickeb96
+	Email = nickeb96@gmail.com
+[init]
+	DefaultBranch = master
+	TemplateDir = ~/.config/git/template
+[push]
+	AutoSetupRemote = true
+[core]
+	IgnoreCase = true
+[bash]
+	ShowInformativeStatus = true
+	ShowDirtyState = true

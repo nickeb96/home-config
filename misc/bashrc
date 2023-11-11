@@ -1,0 +1,58 @@
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+    *) return ;;
+esac
+
+# user (grey) @
+# PS1='\[\e[38;2;153;153;153m\]\u\[\e[0m\]@'
+PS1='\[\e[2m\]\u\[\e[0m\]@'
+
+# hostname
+if [ "${CLOUD_SHELL}" = true ] ; then
+    # remote google cloud shell (amber)
+    PS1+='\[\e[33m\]cloudshell\[\e[0m\] '
+    PS1+='$([[ -n $DEVSHELL_PROJECT_ID ]] && printf "\[\e[1;33m\](%s) " ${DEVSHELL_PROJECT_ID} )'
+elif [ -n "${SSH_TTY}" ] ; then
+    # other remote shell (amber)
+    PS1+='\[\e[33m\]\h\[\e[0m\] '
+else
+    # local shell (grey)
+    PS1+='\[\e[2m\]\h\[\e[0m\] '
+fi
+
+# ~/pwd$
+PS1+='\[\e[0m\]\W\[\e[0m\]\$ '
+
+# Disable persistent history between sessions
+HISTFILE=
+HISTFILESIZE=0
+
+# Makes tab complete not start a new prompt on each tab
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
+# Use neovim instead if available
+if command -v nvim &>/dev/null ; then
+    alias vi='nvim'
+    alias view='nvim -RM'
+fi
+
+if command -v gls &>/dev/null ; then
+    # GNU ls manually installed on a mac
+    alias ls='gls --color=auto'
+elif ls --color=auto &>/dev/null ; then
+    # --color options supported (GNU or newer version of BSD)
+    alias ls='ls --color=auto'
+elif ls -G &>/dev/null ; then
+    # older version of BSD
+    alias ls='ls -G'
+fi
+
+# For GNU ls
+export LS_COLORS='no=00:fi=00:rs=0:di=34:ln=36:mh=01:pi=35:so=35:do=35:bd=33;01:cd=33:or=31:mi=90:su=32;01:sg=32;01:tw=34;01:ow=34:st=34;01:ex=32:'
+
+# For BSD ls
+export LSCOLORS='exgxfxfxcxDxdxCxCxExex'
+

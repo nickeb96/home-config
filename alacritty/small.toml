@@ -1,0 +1,4 @@
+window.dimensions.columns = 80
+window.dimensions.lines = 25
+window.position.x = 1400
+window.position.y = 300

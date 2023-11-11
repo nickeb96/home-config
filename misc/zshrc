@@ -1,0 +1,51 @@
+
+SAVEHIST=0
+HISTSIZE=0
+HISTFILESIZE=0
+
+function zshaddhistory() {
+    return 1
+}
+
+
+if [ "$(uname -s)" = Darwin -a "$(uname -m)" = arm64 ] ; then
+    case "$PATH" in
+        *':/opt/homebrew/bin:'*|*':/opt/homebrew/bin'|'/opt/homebrew/bin:'*)
+            ;;
+        *)
+            if test -d /opt/homebrew/bin ; then
+                PATH="/opt/homebrew/bin:$PATH"
+            fi
+            ;;
+    esac
+fi
+
+
+PROMPT='%F{102}%n%f@%F{102}%m%f %F{117}%2~%f%# '
+
+
+if command -v nvim &>/dev/null ; then
+    alias vi='nvim'
+    alias view='nvim -RM'
+fi
+
+if command -v gls &>/dev/null ; then
+    # GNU ls manually installed on a mac
+    alias ls='gls --color=auto'
+elif ls --color=auto &>/dev/null ; then
+    # --color options supported (GNU or newer version of BSD)
+    alias ls='ls --color=auto'
+elif ls -G &>/dev/null ; then
+    # older version of BSD
+    alias ls='ls -G'
+fi
+
+# For GNU ls
+export LS_COLORS='no=00:fi=00:rs=0:di=34:ln=36:mh=01:pi=35:so=35:do=35:bd=33;01:cd=33:or=31:mi=90:su=32;01:sg=32;01:tw=34;01:ow=34:st=34;01:ex=32:'
+
+# For BSD ls
+export LSCOLORS='exgxfxfxcxDxdxCxCxExex'
+
+# To enable emacs bindings
+bindkey -e
+

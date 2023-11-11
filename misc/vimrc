@@ -1,0 +1,13 @@
+set viminfofile=NONE
+set nocompatible
+set background=dark
+set ruler
+set scroll=10
+set expandtab
+set tabstop=4
+set shiftwidth=0
+set softtabstop=-1
+set hlsearch
+noremap <silent> ? :nohl<Enter>:echon ''<Enter>
+syntax on
+filetype plugin indent on

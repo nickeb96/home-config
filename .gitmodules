@@ -1,0 +1,10 @@
+[submodule "fish-config"]
+	path = fish
+	url = ../fish-config.git
+	branch = master
+	ignore = dirty
+[submodule "nvim-config"]
+	path = nvim
+	url = ../nvim-config.git
+	branch = master
+	ignore = dirty

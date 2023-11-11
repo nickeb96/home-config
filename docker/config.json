@@ -1,0 +1,8 @@
+{
+	"auths": {},
+	"imagesFormat": "table {{.ID}}\\t{{.Size}}\\t{{.Tag}}\\t{{.Repository}}",
+	"psFormat": "table {{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{.Command}}",
+	"detachKeys": "ctrl-x,x",
+	"credsStore": "desktop",
+	"currentContext": "desktop-linux"
+}

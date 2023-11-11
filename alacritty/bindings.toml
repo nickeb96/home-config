@@ -1,0 +1,79 @@
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+command.program = "sh"
+command.args = [
+  "-c",
+  """\
+    ln -sf ~/.config/alacritty/small.toml ~/.config/alacritty/window.toml
+    sleep 0.2
+    ~/.local/bin/alacritty msg create-window
+    sleep 0.2
+    ln -sf ~/.config/alacritty/large.toml ~/.config/alacritty/window.toml
+  """,
+]
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Command"
+action = "ToggleFullscreen"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Command"
+command.program = "sh"
+command.args = [
+  "-c",
+  """\
+    if [ "$(readlink ~/.config/alacritty/colors/current.toml)" = dark.toml ] ; then
+      ln -sf light.toml ~/.config/alacritty/colors/current.toml
+    else
+      ln -sf dark.toml ~/.config/alacritty/colors/current.toml
+    fi
+    touch ~/.config/alacritty/alacritty.toml
+  """,
+]
+
+[[keyboard.bindings]]
+key = "H"
+mods = "Command"
+action = "None"
+
+[[keyboard.bindings]]
+key = "Q"
+mods = "Command"
+action = "None"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+action = "None"
+
+[[keyboard.bindings]]
+key = "M"
+mods = "Command"
+action = "None"
+
+# Temporarily disabling these to fix issue with nvim-autopairs
+
+# [[keyboard.bindings]]
+# key = "Return"
+# mods = "Shift"
+# chars = "\u001b[13;2u"
+
+# [[keyboard.bindings]]
+# key = "Return"
+# mods = "Control"
+# chars = "\u001b[13;5u"
+
+# [[keyboard.bindings]]
+# key = "Space"
+# mods = "Shift"
+# chars = "\u001b[32;2u"
+
+# [[keyboard.bindings]]
+# key = "Space"
+# mods = "Control"
+# chars = "\u001b[32;5u"
+

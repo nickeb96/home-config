@@ -1,0 +1,41 @@
+
+# https://www.hsluv.org/
+
+
+[colors.primary]
+foreground = "#d0d0d0"
+background = "#161616"
+
+# [colors.dim]
+# red = "#f15d60"
+# green = "#3ba535"
+# blue = "#598fee"
+# cyan = "#3b9f9f"
+# magenta = "#ed43ed"
+# yellow = "#9a9336"
+
+# [colors.normal]
+# red = "#f58f83"
+# green = "#68bf41"
+# blue = "#53b3f3"
+# cyan = "#46bdb1"
+# magenta = "#df8bf3"
+# yellow = "#c5a941"
+
+# [colors.bright]
+# red = "#f6b9a3"
+# green = "#85dc58"
+# blue = "#62d5f4"
+# cyan = "#5cdcb0"
+# magenta = "#f5b3dd"
+# yellow = "#e5c459"
+
+
+[colors.normal]
+red = "#f15d60"
+green = "#85dc58"
+blue = "#53b3f3"
+cyan = "#46bdb1"
+magenta = "#df8bf3"
+yellow = "#e5c459"
+
