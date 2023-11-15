@@ -1,0 +1,5 @@
+escape ^Ll
+startup_message off
+altscreen on
+term screen-256color
+shell fish

@@ -6,11 +6,11 @@ command.program = "sh"
 command.args = [
   "-c",
   """\
-    ln -sf ~/.config/alacritty/small.toml ~/.config/alacritty/window.toml
-    sleep 0.2
+    ln -sf small.toml ~/.config/alacritty/window.toml
+    sleep 0.5
     ~/.local/bin/alacritty msg create-window
     sleep 0.2
-    ln -sf ~/.config/alacritty/large.toml ~/.config/alacritty/window.toml
+    ln -sf large.toml ~/.config/alacritty/window.toml
   """,
 ]
 

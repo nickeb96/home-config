@@ -38,21 +38,26 @@ fi
 
 # ssh
 if ! test -e ~/.ssh/config ; then
+    if ! test -d ~/.ssh ; then
+        mkdir -m 700 ~/.ssh
+    fi
     echo 'creating ~/.ssh/config with "Include ~/.config/ssh/config"' >&2
     printf '%s\n\n' 'Include ~/.config/ssh/config' >~/.ssh/config
+    chmod 600 ~/.ssh/config
 elif ! grep --quiet '\bInclude ~/\.config/ssh/config\b' ~/.ssh/config ; then
     echo 'adding "Include ~/.config/ssh/config" to ~/.ssh/config' >&2
     printf '\n\n%s\n\n' 'Include ~/.config/ssh/config' >>~/.ssh/config
 else
     echo '~/.ssh/config already has "Include ~/.config/ssh/config"' >&2
 fi
-mkdir -p ~/.local/state/ssh/sockets || true
+mkdir -p ~/.local/state/ssh/sockets
+chmod 700 ~/.local/state/ssh/sockets
 
 
 # rustfmt fix for mac
 if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/Application\ Support/rustfmt ; then
     echo 'fixing rustfmt config'
-    ln -s ../../.config/rustfmt ~/Library/Application\ Support/
+    ln -s ../../.config/rustfmt ~/Library/Application\ Support
 fi
 
 
@@ -69,7 +74,7 @@ if [ "$(uname -s)" = Darwin ] ; then
         ln -s "$alacritty_path"/Contents/MacOS/alacritty ~/.local/bin/
         mkdir -p ~/.local/share/fish/vendor_completions.d
         ln -s "$alacritty_path"/Contents/Resources/completions/alacritty.fish \
-            ~/.local/share/fish/vendor_completions.d/
+            ~/.local/share/fish/vendor_completions.d
         mkdir -p ~/.local/share/man/man1 || true
         mkdir -p ~/.local/share/man/man5 || true
         ln -s "$alacritty_path"/Contents/Resources/alacritty.1.gz \
@@ -83,8 +88,12 @@ if [ "$(uname -s)" = Darwin ] ; then
         if ! cmp ~/.config/alacritty/icon.icns \
                 "$alacritty_path"/Contents/Resources/alacritty.icns >/dev/null ; then
             echo 'changing alacritty icon' >&2
-            cp ~/.config/alacritty/icon.icns "$alacrity_path"/Contents/Resources/alacritty.icns
+            cp ~/.config/alacritty/icon.icns "$alacritty_path"/Contents/Resources/alacritty.icns
             touch "$alacritty_path"
+        fi
+        if [ "$(plutil -extract CFBundleName raw "$alacritty_path"/Contents/Info.plist)" != ' ' ] ; then
+            echo 'renaming alacritty' >&2
+            plutil -replace CFBundleName -string ' ' "$alacritty_path"/Contents/Info.plist
         fi
     else
         echo 'alacritty is not installed' >&2

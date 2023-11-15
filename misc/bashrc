@@ -16,7 +16,7 @@ if [ "${CLOUD_SHELL}" = true ] ; then
     PS1+='$([[ -n $DEVSHELL_PROJECT_ID ]] && printf "\[\e[1;33m\](%s) " ${DEVSHELL_PROJECT_ID} )'
 elif [ -n "${SSH_TTY}" ] ; then
     # other remote shell (amber)
-    PS1+='\[\e[33m\]\h\[\e[0m\] '
+    PS1+='\[\e[2;33m\]\h\[\e[0m\] '
 else
     # local shell (grey)
     PS1+='\[\e[2m\]\h\[\e[0m\] '

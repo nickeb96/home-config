@@ -9,8 +9,8 @@ function zshaddhistory() {
 
 
 if [ "$(uname -s)" = Darwin -a "$(uname -m)" = arm64 ] ; then
-    case "$PATH" in
-        *':/opt/homebrew/bin:'*|*':/opt/homebrew/bin'|'/opt/homebrew/bin:'*)
+    case ":${PATH}:" in
+        *:/opt/homebrew/bin:*)
             ;;
         *)
             if test -d /opt/homebrew/bin ; then
