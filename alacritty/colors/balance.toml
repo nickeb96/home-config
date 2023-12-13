@@ -1,7 +1,6 @@
 
 # https://www.hsluv.org/
 
-
 [colors.primary]
 foreground = "#d0d0d0"
 background = "#161616"
@@ -30,7 +29,6 @@ background = "#161616"
 # magenta = "#f5b3dd"
 # yellow = "#e5c459"
 
-
 [colors.normal]
 red = "#f15d60"
 green = "#85dc58"
@@ -38,4 +36,3 @@ blue = "#53b3f3"
 cyan = "#46bdb1"
 magenta = "#df8bf3"
 yellow = "#e5c459"
-

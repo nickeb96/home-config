@@ -1,55 +1,34 @@
-
 [colors.primary]
 foreground = "#12171d"
 background = "#ffe7d9"
-# dim_foreground = "#b1978a"
+dim_foreground = "#9c8273"
 
-[colors.bright]
-black = "#000000"
-# white = "#8f9aa8"
-white = "#828c99"
-# red = "#b03841"
-red = "#d14955"
-# green = "#55714b"
-green = "#6e9161"
-# green = "#98b88a"
-# green = "#60bf80"
-# blue = "#297b9e"
-# blue = "#4465c9"
-# blue = "#5574d4"
-blue = "#6385eb"
-# blue = "#7192f5"
-# cyan = "#1e7f9f"
-cyan = "#259bc2"
-magenta = "#7d61c2"
-# yellow = "#dabb81"
-# yellow = "#d9ba4a"
-yellow = "#d9a94a"
-
-[colors.normal]
-black = "#2c2f33"
-white = "#ede3d6"
-# red = "#ff9985"
+[colors.dim]
+black = "#ffffff"
+white = "#6e7175"
 red = "#ff5a55"
 green = "#abeb91"
-# blue = "#78b9fa"
-# blue = "#87c3ff"
 blue = "#82c1ff"
 cyan = "#31d3d3"
 magenta = "#b354f7"
-yellow = "#fce97d"
+yellow = "#edcc13"
 
-#ff5a55
+[colors.normal]
+black = "#dfe4eb"
+white = "#41464d"
+red = "#d14955"
+green = "#6e9161"
+blue = "#6385eb"
+cyan = "#259bc2"
+magenta = "#7d61c2"
+yellow = "#d9a94a"
 
-[colors.dim]
-# black = "#5f6975"
-black = "#4c555e"
-white = "#ffffff"
-red = "#ff9794"
-green = "#c9e6be"
-blue = "#baddff"
-cyan = "#a9ebeb"
-# magenta = "#d9a7fc"
-magenta = "#fca7e3"
-yellow = "#ffffb5"
-
+[colors.bright]
+black = "#9ca0a6"
+white = "#000000"
+red = "#9c0b06"
+green = "#246e0b"
+blue = "#0836bf"
+cyan = "#046382"
+magenta = "#3f1f91"
+yellow = "#a68b05"

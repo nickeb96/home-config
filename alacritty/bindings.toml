@@ -6,18 +6,12 @@ command.program = "sh"
 command.args = [
   "-c",
   """\
-    ln -sf small.toml ~/.config/alacritty/window.toml
-    sleep 0.5
-    ~/.local/bin/alacritty msg create-window
-    sleep 0.2
-    ln -sf large.toml ~/.config/alacritty/window.toml
+    ~/.local/bin/alacritty msg create-window \
+      --working-directory "$PWD" \
+      --option 'window.dimensions={columns=80,lines=25}' \
+      --option 'window.position={x=1400,y=300}'
   """,
 ]
-
-[[keyboard.bindings]]
-key = "F"
-mods = "Command"
-action = "ToggleFullscreen"
 
 [[keyboard.bindings]]
 key = "L"
@@ -31,7 +25,7 @@ command.args = [
     else
       ln -sf dark.toml ~/.config/alacritty/colors/current.toml
     fi
-    touch ~/.config/alacritty/alacritty.toml
+    ~/.local/bin/alacritty msg config "$(cat ~/.config/alacritty/colors/current.toml)"
   """,
 ]
 
@@ -55,25 +49,8 @@ key = "M"
 mods = "Command"
 action = "None"
 
-# Temporarily disabling these to fix issue with nvim-autopairs
-
-# [[keyboard.bindings]]
-# key = "Return"
-# mods = "Shift"
-# chars = "\u001b[13;2u"
-
-# [[keyboard.bindings]]
-# key = "Return"
-# mods = "Control"
-# chars = "\u001b[13;5u"
-
-# [[keyboard.bindings]]
-# key = "Space"
-# mods = "Shift"
-# chars = "\u001b[32;2u"
-
-# [[keyboard.bindings]]
-# key = "Space"
-# mods = "Control"
-# chars = "\u001b[32;5u"
+[[keyboard.bindings]]
+key = "/"
+mods = "Control"
+action = "None"
 
