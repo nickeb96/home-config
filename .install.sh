@@ -27,6 +27,17 @@ if command -v zsh >/dev/null ; then
 fi
 
 
+# screen
+if command -v screen >/dev/null ; then
+    if ! test -e ~/.screenrc ; then
+        echo 'linking ~/.screenrc' >&2
+        ln -s .config/misc/screenrc ~/.screenrc
+    else
+        echo '~/.screenrc already exists' >&2
+    fi
+fi
+
+
 # vim
 if command -v vim >/dev/null && ! command -v nvim >/dev/null ; then
     if ! test -e ~/.vimrc ; then
@@ -56,7 +67,7 @@ chmod 700 ~/.local/state/ssh/sockets
 
 # rustfmt fix for mac
 if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/Application\ Support/rustfmt ; then
-    echo 'fixing rustfmt config'
+    echo 'fixing rustfmt config' >&2
     ln -s ../../.config/rustfmt ~/Library/Application\ Support
 fi
 
@@ -85,15 +96,16 @@ if [ "$(uname -s)" = Darwin ] ; then
             ~/.local/share/man/man5/alacritty.5.gz
         ln -s "$alacritty_path"/Contents/Resources/alacritty-bindings.5.gz \
             ~/.local/share/man/man5/alacritty-bindings.5.gz
+        # if [ "$(plutil -extract CFBundleName raw "$alacritty_path"/Contents/Info.plist)" != ' ' ] ; then
+        #     echo 'renaming alacritty' >&2
+        #     plutil -replace CFBundleName -string ' ' "$alacritty_path"/Contents/Info.plist
+        # fi
         if ! cmp ~/.config/alacritty/icon.icns \
                 "$alacritty_path"/Contents/Resources/alacritty.icns >/dev/null ; then
             echo 'changing alacritty icon' >&2
             cp ~/.config/alacritty/icon.icns "$alacritty_path"/Contents/Resources/alacritty.icns
             touch "$alacritty_path"
-        fi
-        if [ "$(plutil -extract CFBundleName raw "$alacritty_path"/Contents/Info.plist)" != ' ' ] ; then
-            echo 'renaming alacritty' >&2
-            plutil -replace CFBundleName -string ' ' "$alacritty_path"/Contents/Info.plist
+            killall Dock Finder
         fi
     else
         echo 'alacritty is not installed' >&2
@@ -104,8 +116,9 @@ fi
 # brew
 if [ "$(uname -s)" = Darwin ] && command -v brew >/dev/null ; then
     if ! brew tap | grep --quiet '^homebrew/aliases$' ; then
-        echo 'tapping homebrew/aliases'
+        echo 'tapping homebrew/aliases' >&2
         brew tap homebrew/aliases
+        ln -s ~/.config/brew-aliases/show "$(brew --prefix)/bin/brew-show"
     fi
 fi
 
@@ -113,7 +126,7 @@ fi
 # docker
 if test -d ~/.docker ; then
     if ! test -f ~/.docker/config.json ; then
-        echo 'linking ~/.docker/config.json'
+        echo 'linking ~/.docker/config.json' >&2
         ln -s ../.config/docker/config.json ~/.docker/config.json
     else
         echo '~/.docker/config.json already exists' >&2

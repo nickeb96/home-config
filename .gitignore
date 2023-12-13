@@ -1,4 +1,12 @@
-/gcloud
+/*/
+!/alacritty/
+!/docker/
+!/git/
+/git/config
+/git/local-config
+!/misc/
+!/python/
+!/rustfmt/
+!/ssh/
 /ssh/id_*
-/htop
-/rclone
+!/tmux/

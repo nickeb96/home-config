@@ -10,7 +10,6 @@ from copy import copy, deepcopy
 
 import dataclasses
 import enum
-from typing import Self
 from collections import deque, defaultdict, namedtuple
 
 import itertools
@@ -25,26 +24,27 @@ import random
 from fractions import Fraction
 from decimal import Decimal
 
-import tomllib
 import json
 import csv
+if (sys.version_info.major, sys.version_info.minor) >= (3, 11):
+    import tomllib  # tomllib introduced in Python 3.11
 
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 sys.dont_write_bytecode = True
 
 
-if str(Path.home()/".local/lib/python3") not in sys.path:
-    sys.path.append(str(Path.home()/".local/lib/python3"))
-
-
 import readline as _readline
 _readline.write_history_file = lambda *args: None
 
-_readline.parse_and_bind(r"bind '\e^f' em-next-word")
-_readline.parse_and_bind(r"bind '\e^b' ed-prev-word")
+if os.uname().sysname == "Darwin":
+    _readline.parse_and_bind(r"bind '\e^f' em-next-word")
+    _readline.parse_and_bind(r"bind '\e^b' ed-prev-word")
+elif os.uname().sysname == "Linux":
+    _readline.parse_and_bind(r'"\e\C-f": forward-word')
+    _readline.parse_and_bind(r'"\e\C-b": backward-word')
 
 sys.ps1 = "> "
 sys.ps2 = "- "
@@ -61,4 +61,3 @@ class _Exit():
 exit = _Exit()
 
 
-print("Python startup file loaded from ~/.config/python/startup.py")

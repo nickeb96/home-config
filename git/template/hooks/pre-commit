@@ -24,7 +24,7 @@ then
     cat <<\EOF
 Error: non-ASCII file name.
 Disable this check with:
-  git config hooks.allownonascii true
+  git config hooks.AllowNonAscii true
 EOF
     exit 1
 fi

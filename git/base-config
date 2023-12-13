@@ -1,0 +1,16 @@
+# vim: ft=gitconfig
+
+[Init]
+	DefaultBranch = master
+	TemplateDir = ~/.config/git/template
+[Core]
+	IgnoreCase = true
+	Eol = lf
+[Push]
+	AutoSetupRemote = true
+[Checkout]
+	DefaultRemote = origin
+[Bash]
+	ShowDirtyState = true
+	ShowInformativeStatus = true
+	ShowUntrackedFiles = false
