@@ -46,6 +46,8 @@ builtin_box_drawing = true
 size = 15.0
 offset.x = 1
 offset.y = 0
+glyph_offset.x = 0
+glyph_offset.y = 2
 normal = { family = "SauceCodePro Nerd Font", style = "Regular" }
 italic = { family = "SauceCodePro Nerd Font", style = "Italic" }
 bold = { family = "SauceCodePro Nerd Font", style = "Bold" }

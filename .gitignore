@@ -1,8 +1,9 @@
-/*/
+/*
 !/alacritty/
+/alacritty/colors/current.toml
+!/brew-aliases/
 !/docker/
 !/git/
-/git/config
 /git/local-config
 !/misc/
 !/python/

@@ -1,4 +1,4 @@
-# vim: ft=gitconfig
+# vim: filetype=gitconfig
 
 [Init]
 	DefaultBranch = master
