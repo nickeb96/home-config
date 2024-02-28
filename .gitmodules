@@ -2,9 +2,9 @@
 	path = fish
 	url = ../fish-config.git
 	branch = master
-	ignore = dirty
+	ignore = all
 [submodule "nvim-config"]
 	path = nvim
 	url = ../nvim-config.git
 	branch = master
-	ignore = dirty
+	ignore = all

@@ -52,5 +52,5 @@ action = "None"
 [[keyboard.bindings]]
 key = "/"
 mods = "Control"
-action = "None"
+chars = "\u001f"
 

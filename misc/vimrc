@@ -3,6 +3,7 @@ set nocompatible
 set background=dark
 set ruler
 set scroll=10
+set guicursor=
 set expandtab
 set tabstop=4
 set shiftwidth=0
