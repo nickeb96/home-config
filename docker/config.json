@@ -4,5 +4,5 @@
   "currentContext": "desktop-linux",
   "detachKeys": "ctrl-x,x",
   "imagesFormat": "table {{.ID}}\\t{{.Size}}\\t{{.Tag}}\\t{{.Repository}}",
-  "psFormat": "table {{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{.Command}}"
+  "psFormat": "table {{.Names}}\\t{{printf \"%.20s\" .Image}}\\t{{.Status}}\\t{{.Command}}"
 }

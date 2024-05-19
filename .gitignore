@@ -1,10 +1,12 @@
 /*
 !/alacritty/
+/alacritty/local.toml
 /alacritty/colors/current.toml
 !/brew-aliases/
 !/docker/
 !/git/
 /git/local-config
+!/lua/
 !/misc/
 !/python/
 !/rustfmt/

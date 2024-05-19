@@ -50,14 +50,13 @@ sys.ps1 = "> "
 sys.ps2 = "- "
 
 
-class _Exit():
-    def __call__(self, *args, **kwargs):
-        sys.exit(*args, **kwargs)
-    def __repr__(self):
-        sys.exit()
-    def __str__(self):
-        sys.exit()
-
-exit = _Exit()
-
+if "get_ipython" not in globals():
+    class _Exit():
+        def __call__(self, *args, **kwargs):
+            sys.exit(*args, **kwargs)
+        def __repr__(self):
+            sys.exit()
+        def __str__(self):
+            sys.exit()
+    exit = _Exit()
 

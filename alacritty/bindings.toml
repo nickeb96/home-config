@@ -6,10 +6,15 @@ command.program = "sh"
 command.args = [
   "-c",
   """\
+    rand() {
+      x="$(head -c 1 /dev/random | xxd -p | xargs -I @ printf '%d' 0x@)"
+      echo "$1 + $x" | bc
+    }
     ~/.local/bin/alacritty msg create-window \
       --working-directory "$PWD" \
+      --option 'font.size=15.0' \
       --option 'window.dimensions={columns=80,lines=25}' \
-      --option 'window.position={x=1400,y=300}'
+      --option "window.position={x=$(rand 1200),y=$(rand 100)}"
   """,
 ]
 

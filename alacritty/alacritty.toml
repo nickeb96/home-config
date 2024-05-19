@@ -1,63 +1,6 @@
-
 import = [
+  "~/.config/alacritty/base.toml",
   "~/.config/alacritty/bindings.toml",
   "~/.config/alacritty/colors/current.toml",
+  "~/.config/alacritty/local.toml",
 ]
-
-
-[shell]
-program = "/bin/sh"
-args = [
-  "-c",
-  """\
-    command -v fish >/dev/null &&
-      exec fish ||
-    test -x /opt/homebrew/bin/fish &&
-      exec /opt/homebrew/bin/fish ||
-    text -x /usr/local/bin/fish &&
-      exec /usr/local/bin/fish ||
-    exec $SHELL
-  """,
-]
-
-
-[window]
-decorations = "Buttonless"
-title = ""
-option_as_alt = "OnlyLeft"
-resize_increments = true
-startup_mode = "Windowed"
-padding.x = 8
-padding.y = 8
-dimensions.columns = 100
-dimensions.lines = 46
-position.x = 50
-position.y = 120
-
-
-[cursor]
-unfocused_hollow = true
-style.blinking = "Off"
-style.shape = "Underline"
-
-
-[font]
-builtin_box_drawing = true
-size = 15.0
-offset.x = 1
-offset.y = 0
-glyph_offset.x = 0
-glyph_offset.y = 2
-normal = { family = "SauceCodePro Nerd Font", style = "Regular" }
-italic = { family = "SauceCodePro Nerd Font", style = "Italic" }
-bold = { family = "SauceCodePro Nerd Font", style = "Bold" }
-bold_italic = { family = "SauceCodePro Nerd Font", style = "Bold Italic" }
-
-
-[mouse]
-hide_when_typing = true
-
-
-[scrolling]
-history = 2000
-
