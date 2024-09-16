@@ -50,7 +50,7 @@ sys.ps1 = "> "
 sys.ps2 = "- "
 
 
-if "get_ipython" not in globals():
+if sys.version_info < (3, 13) and "get_ipython" not in globals():
     class _Exit():
         def __call__(self, *args, **kwargs):
             sys.exit(*args, **kwargs)
@@ -58,5 +58,5 @@ if "get_ipython" not in globals():
             sys.exit()
         def __str__(self):
             sys.exit()
-    exit = _Exit()
+    globals()["exit"] = _Exit()
 

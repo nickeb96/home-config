@@ -27,10 +27,20 @@ command.args = [
   """\
     if [ "$(readlink ~/.config/alacritty/colors/current.toml)" = dark.toml ] ; then
       ln -sf light.toml ~/.config/alacritty/colors/current.toml
+      DARK_BACKGROUND_COLOR=false
     else
       ln -sf dark.toml ~/.config/alacritty/colors/current.toml
+      DARK_BACKGROUND_COLOR=true
     fi
     ~/.local/bin/alacritty msg config "$(cat ~/.config/alacritty/colors/current.toml)"
+    echo '
+      on run {dark_background_color}
+        tell application "System Events"
+          tell appearance preferences
+            set dark mode to dark_background_color
+          end tell
+        end tell
+      end run' | osascript - $DARK_BACKGROUND_COLOR
   """,
 ]
 

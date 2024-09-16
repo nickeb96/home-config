@@ -1,7 +1,11 @@
+# vim: set filetype=sshconfig
+
 Host *
-    ControlMaster auto
+    ControlMaster no # change to `auto` on a per-host basis
     ControlPersist 120
     ControlPath ~/.local/state/ssh/sockets/%r@%h:%p
+    HashKnownHosts no
 
 Match exec "echo %h | grep -qE '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'"
+    CheckHostIp no
     UserKnownHostsFile /dev/null

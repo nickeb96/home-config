@@ -53,7 +53,7 @@ if ! test -e ~/.ssh/config ; then
         mkdir -m 700 ~/.ssh
     fi
     echo 'creating ~/.ssh/config with "Include ~/.config/ssh/config"' >&2
-    printf '%s\n\n' 'Include ~/.config/ssh/config' >~/.ssh/config
+    printf '%s\n' 'Include ~/.config/ssh/config' >~/.ssh/config
     chmod 600 ~/.ssh/config
 elif ! grep --quiet '\bInclude ~/\.config/ssh/config\b' ~/.ssh/config ; then
     echo 'adding "Include ~/.config/ssh/config" to ~/.ssh/config' >&2

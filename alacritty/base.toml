@@ -30,7 +30,7 @@ style.blinking = "Off"
 style.shape = "Underline"
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [scrolling]
 history = 4000
