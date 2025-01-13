@@ -1,6 +1,7 @@
 set viminfofile=NONE
 set nocompatible
 set background=dark
+set laststatus=2
 set ruler
 set scroll=10
 set guicursor=

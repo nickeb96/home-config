@@ -1,8 +1,10 @@
 #!/bin/sh
 
 
-git submodule init
-git submodule update
+if command -v git >/dev/null ; then
+    git submodule init
+    git submodule update
+fi
 
 
 # bash
@@ -72,6 +74,13 @@ if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/Application\ Support/rustfm
 fi
 
 
+# keybindings for mac
+if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/KeyBindings/DefaultKeyBinding.dict ; then
+    mkdir -p ~/Library/KeyBindings/DefaultKeyBinding.dict
+    cp ~/.config/macos/DefaultKeyBindings.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+fi
+
+
 # alacritty
 if [ "$(uname -s)" = Darwin ] ; then
     if test -d /Applications/Alacritty.app ; then
@@ -81,27 +90,36 @@ if [ "$(uname -s)" = Darwin ] ; then
     fi
     if test -n "$alacritty_path" ; then 
         echo "setting up alacritty ($alacritty_path)" >&2
-        mkdir -p ~/.local/bin || true
-        ln -s "$alacritty_path"/Contents/MacOS/alacritty ~/.local/bin/
-        mkdir -p ~/.local/share/fish/vendor_completions.d
-        ln -s "$alacritty_path"/Contents/Resources/completions/alacritty.fish \
-            ~/.local/share/fish/vendor_completions.d
-        mkdir -p ~/.local/share/man/man1 || true
-        mkdir -p ~/.local/share/man/man5 || true
-        ln -s "$alacritty_path"/Contents/Resources/alacritty.1.gz \
-            ~/.local/share/man/man1/alacritty.1.gz
-        ln -s "$alacritty_path"/Contents/Resources/alacritty-msg.1.gz \
-            ~/.local/share/man/man1/alacritty-msg.1.gz
-        ln -s "$alacritty_path"/Contents/Resources/alacritty.5.gz \
-            ~/.local/share/man/man5/alacritty.5.gz
-        ln -s "$alacritty_path"/Contents/Resources/alacritty-bindings.5.gz \
-            ~/.local/share/man/man5/alacritty-bindings.5.gz
-        # if [ "$(plutil -extract CFBundleName raw "$alacritty_path"/Contents/Info.plist)" != ' ' ] ; then
-        #     echo 'renaming alacritty' >&2
-        #     plutil -replace CFBundleName -string ' ' "$alacritty_path"/Contents/Info.plist
-        # fi
-        if ! cmp ~/.config/alacritty/icon.icns \
-                "$alacritty_path"/Contents/Resources/alacritty.icns >/dev/null ; then
+        if ! test -e ~/.local/bin/alacritty ; then
+            mkdir -vp ~/.local/bin
+            ln -vs "$alacritty_path"/Contents/MacOS/alacritty ~/.local/bin
+        fi
+        if ! test -e ~/.local/share/fish/vendor_completions.d/alacritty.fish ; then
+            mkdir -vp ~/.local/share/fish/vendor_completions.d
+            ln -vs "$alacritty_path"/Contents/Resources/completions/alacritty.fish \
+                ~/.local/share/fish/vendor_completions.d
+        fi
+        if ! test -e ~/.local/share/man/man1/alacritty.1.gz ; then
+            mkdir -vp ~/.local/share/man/man1
+            ln -vs "$alacritty_path"/Contents/Resources/alacritty.1.gz \
+                ~/.local/share/man/man1/alacritty.1.gz
+        fi
+        if ! test -e ~/.local/share/man/man1/alacritty-msg.1.gz ; then
+            mkdir -vp ~/.local/share/man/man1
+            ln -vs "$alacritty_path"/Contents/Resources/alacritty-msg.1.gz \
+                ~/.local/share/man/man1/alacritty-msg.1.gz
+        fi
+        if ! test -e ~/.local/share/man/man5/alacritty.5.gz ; then
+            mkdir -vp ~/.local/share/man/man5
+            ln -vs "$alacritty_path"/Contents/Resources/alacritty.5.gz \
+                ~/.local/share/man/man5/alacritty.5.gz
+        fi
+        if ! test -e ~/.local/share/man/man5/alacritty-bindings.5.gz ; then
+            mkdir -vp ~/.local/share/man/man5
+            ln -vs "$alacritty_path"/Contents/Resources/alacritty-bindings.5.gz \
+                ~/.local/share/man/man5/alacritty-bindings.5.gz
+        fi
+        if ! cmp ~/.config/alacritty/icon.icns "$alacritty_path"/Contents/Resources/alacritty.icns >/dev/null ; then
             echo 'changing alacritty icon' >&2
             cp ~/.config/alacritty/icon.icns "$alacritty_path"/Contents/Resources/alacritty.icns
             touch "$alacritty_path"

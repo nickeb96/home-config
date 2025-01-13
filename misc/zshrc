@@ -32,12 +32,8 @@ fi
 if command -v gls &>/dev/null ; then
     # GNU ls manually installed on a mac
     alias ls='gls --color=auto'
-elif ls --color=auto &>/dev/null ; then
-    # --color options supported (GNU or newer version of BSD)
+else
     alias ls='ls --color=auto'
-elif ls -G &>/dev/null ; then
-    # older version of BSD
-    alias ls='ls -G'
 fi
 
 # For GNU ls

@@ -35,7 +35,7 @@ hide_when_typing = false
 [scrolling]
 history = 4000
 
-[shell]
+[terminal.shell]
 program = "/bin/sh"
 args = [
   "-c",
