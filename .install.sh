@@ -69,15 +69,16 @@ chmod 700 ~/.local/state/ssh/sockets
 
 # rustfmt fix for mac
 if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/Application\ Support/rustfmt ; then
-    echo 'fixing rustfmt config' >&2
-    ln -s ../../.config/rustfmt ~/Library/Application\ Support
+    echo 'linking rustfmt config' >&2
+    ln -s ../../.config/rustfmt ~/Library/Application\ Support/rustfmt
 fi
 
 
 # keybindings for mac
 if [ "$(uname -s)" = Darwin ] && ! test -e ~/Library/KeyBindings/DefaultKeyBinding.dict ; then
-    mkdir -p ~/Library/KeyBindings/DefaultKeyBinding.dict
-    cp ~/.config/macos/DefaultKeyBindings.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+    echo 'copying DefaultKeyBinding.dict to ~/Library/KeyBindings' >&2
+    mkdir -p ~/Library/KeyBindings
+    cp ~/.config/macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 fi
 
 
@@ -92,7 +93,7 @@ if [ "$(uname -s)" = Darwin ] ; then
         echo "setting up alacritty ($alacritty_path)" >&2
         if ! test -e ~/.local/bin/alacritty ; then
             mkdir -vp ~/.local/bin
-            ln -vs "$alacritty_path"/Contents/MacOS/alacritty ~/.local/bin
+            ln -vs "$alacritty_path"/Contents/MacOS/alacritty ~/.local/bin/alacritty
         fi
         if ! test -e ~/.local/share/fish/vendor_completions.d/alacritty.fish ; then
             mkdir -vp ~/.local/share/fish/vendor_completions.d
@@ -136,7 +137,14 @@ if [ "$(uname -s)" = Darwin ] && command -v brew >/dev/null ; then
     if ! brew tap | grep --quiet '^homebrew/aliases$' ; then
         echo 'tapping homebrew/aliases' >&2
         brew tap homebrew/aliases
-        ln -s ~/.config/brew-aliases/show "$(brew --prefix)/bin/brew-show"
+    fi
+    if test -z "$(brew alias show)" ; then
+        echo 'aliasing brew show as brew info'
+        brew alias show=info
+    fi
+    if ! brew tap | grep --quiet '^homebrew/command-not-found$' ; then
+        echo 'tapping homebrew/command-not-found' >&2
+        brew tap homebrew/command-not-found
     fi
 fi
 

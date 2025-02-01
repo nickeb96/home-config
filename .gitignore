@@ -3,12 +3,15 @@
 /alacritty/local.toml
 /alacritty/colors/current.toml
 !/brew-aliases/
+/brew-aliases/*
+!/brew-aliases/.gitkeep
 !/docker/
 !/git/
 /git/local-config
 !/lua/
 !/macos/
 !/misc/
+!/pandoc/
 !/python/
 !/rustfmt/
 !/ssh/

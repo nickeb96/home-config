@@ -1,14 +1,14 @@
 
-SAVEHIST=0
-HISTSIZE=0
-HISTFILESIZE=0
-
-function zshaddhistory() {
-    return 1
-}
-
-
 if [ "$(uname -s)" = Darwin -a "$(uname -m)" = arm64 ] ; then
+    case ":${PATH}:" in
+        *:/opt/homebrew/sbin:*)
+            ;;
+        *)
+            if test -d /opt/homebrew/sbin ; then
+                PATH="/opt/homebrew/sbin:$PATH"
+            fi
+            ;;
+    esac
     case ":${PATH}:" in
         *:/opt/homebrew/bin:*)
             ;;
@@ -19,10 +19,36 @@ if [ "$(uname -s)" = Darwin -a "$(uname -m)" = arm64 ] ; then
             ;;
     esac
 fi
+case ":${PATH}:" in
+    *:/usr/local/sbin:*)
+        ;;
+    *)
+        PATH="/usr/local/sbin:$PATH"
+esac
+case ":${PATH}:" in
+    *:/usr/local/bin:*)
+        ;;
+    *)
+        PATH="/usr/local/bin:$PATH"
+esac
+case ":${PATH}:" in
+    *:~/.cargo/bin:*)
+        ;;
+    *)
+        PATH="$HOME/.cargo/bin:$PATH"
+esac
+case ":${PATH}:" in
+    *:~/.local/bin:*)
+        ;;
+    *)
+        PATH="$HOME/.local/bin:$PATH"
+esac
 
 
 PROMPT='%F{102}%n%f@%F{102}%m%f %F{117}%2~%f%# '
 
+# Move persistent history to XDG state
+HISTFILE=~/.local/state/zsh_history
 
 if command -v nvim &>/dev/null ; then
     alias vi='nvim'
@@ -31,9 +57,9 @@ fi
 
 if command -v gls &>/dev/null ; then
     # GNU ls manually installed on a mac
-    alias ls='gls --color=auto'
+    alias ls='gls -v --color=auto'
 else
-    alias ls='ls --color=auto'
+    alias ls='ls -v --color=auto'
 fi
 
 # For GNU ls
@@ -44,4 +70,9 @@ export LSCOLORS='exgxfxfxcxDxdxCxCxExex'
 
 # To enable emacs bindings
 bindkey -e
+bindkey '^[^f' forward-word
+bindkey '^[^b' backward-word
+
+# Prevent consuming space before &, |, ; after tab complete
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n'
 

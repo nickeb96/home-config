@@ -42,10 +42,10 @@ args = [
   """\
     command -v fish >/dev/null &&
       exec fish ||
+    test -x /usr/local/bin/fish &&
+      exec /usr/local/bin/fish ||
     test -x /opt/homebrew/bin/fish &&
       exec /opt/homebrew/bin/fish ||
-    text -x /usr/local/bin/fish &&
-      exec /usr/local/bin/fish ||
     exec $SHELL
   """,
 ]

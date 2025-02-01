@@ -1,9 +1,11 @@
 {
-	"^/" = "noop:";
-	"^M" = "noop:";
-	"^\U000D" = "noop:";
-	"^\U00A0" = "noop:";
-	"^\U0020" = "noop:";
-	"~^h" = "deleteWordBackward:";
-	"~^d" = "deleteWordForward:";
+	"^/" = (noop:);
+	"^m" = (noop:);
+	"^M" = (noop:);
+	"^\U000D" = (noop:);
+	"^\U00A0" = (noop:);
+	"^\U0020" = (noop:);
+	"~^h" = (deleteWordBackward:);
+	"~^d" = (deleteWordForward:);
+	"^c" = (selectParagraph:, deleteWordBackward:);
 }

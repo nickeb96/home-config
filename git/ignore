@@ -2,7 +2,7 @@
 
 # python
 .venv/
-.*_venv/
+.*.venv/
 __pycache__/
 *.pyc
 *.pyo
@@ -19,4 +19,4 @@ __pycache__/
 
 # other
 .env
-env
+.*.env

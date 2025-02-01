@@ -1,0 +1,13 @@
+
+from: markdown
+to: pdf
+
+pdf-engine: lualatex
+
+variables:
+  mainfont: Helvetica Neue
+  monofont: SourceCodePro
+  geometry: margin=72pt
+
+# mainfont: SourceCodePro
+# geometry: margin=72pt
