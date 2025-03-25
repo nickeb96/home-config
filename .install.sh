@@ -2,8 +2,8 @@
 
 
 if command -v git >/dev/null ; then
-    git submodule init
-    git submodule update
+    # git submodule init
+    # git submodule update
 fi
 
 
@@ -134,10 +134,6 @@ fi
 
 # brew
 if [ "$(uname -s)" = Darwin ] && command -v brew >/dev/null ; then
-    if ! brew tap | grep --quiet '^homebrew/aliases$' ; then
-        echo 'tapping homebrew/aliases' >&2
-        brew tap homebrew/aliases
-    fi
     if test -z "$(brew alias show)" ; then
         echo 'aliasing brew show as brew info'
         brew alias show=info

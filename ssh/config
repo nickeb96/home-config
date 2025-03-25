@@ -1,4 +1,4 @@
-# vim: set filetype=sshconfig
+# vim: filetype=sshconfig
 
 Host *
     ControlMaster no # change to `auto` on a per-host basis

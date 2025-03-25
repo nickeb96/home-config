@@ -1,4 +1,4 @@
-if arg[0] == "lua" and arg[-1] == nil then
+if arg ~= nil and arg[0] == "lua" and arg[-1] == nil then
   _PROMPT = "> "
   _PROMPT2 = "- "
   _G["exit"] = {}

@@ -6,13 +6,18 @@
 [Core]
 	IgnoreCase = true
 	Eol = lf
+	Whitespace = blank-at-eol,space-before-tab
 [Push]
 	AutoSetupRemote = true
 [Pull]
-    Rebase = true
+	Rebase = true
 [Checkout]
 	DefaultRemote = origin
 [Bash]
 	ShowDirtyState = true
 	ShowInformativeStatus = true
 	ShowUntrackedFiles = true
+[Alias]
+	ls = ls-tree --format='%(objecttype)\t%(objectmode) %(objectsize:padded)  %(path)' HEAD
+	cat = cat-file blob
+	ignored = ls-files --other --ignored --exclude-standard

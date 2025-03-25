@@ -1,9 +1,9 @@
 # Note: on macOS the config dir is considered to be "~/Library/Application Support", run
 #   ln -s ../../.config/rustfmt ~/Library/'Application Support'
 # to fix.
-blank_lines_upper_bound = 2
-comment_width = 99
-edition = "2021"
+# blank_lines_upper_bound = 2 # unstable
+# comment_width = 99 # unstable
+edition = "2024"
 max_width = 119
 reorder_imports = false
 tab_spaces = 2
