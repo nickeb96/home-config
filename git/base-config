@@ -6,13 +6,17 @@
 [Core]
 	IgnoreCase = true
 	Eol = lf
-	Whitespace = blank-at-eol,space-before-tab
+	Whitespace = blank-at-eol,space-before-tab,-indent-with-non-tab,tab-in-indent,-blank-at-eof,cr-at-eol,incomplete-line,tabwidth=4
 [Push]
 	AutoSetupRemote = true
 [Pull]
 	Rebase = true
 [Checkout]
 	DefaultRemote = origin
+[Tag]
+	Sort = v:refname
+[Branch]
+	Sort = v:refname
 [Bash]
 	ShowDirtyState = true
 	ShowInformativeStatus = true
@@ -20,4 +24,4 @@
 [Alias]
 	ls = ls-tree --format='%(objecttype)\t%(objectmode) %(objectsize:padded)  %(path)' HEAD
 	cat = cat-file blob
-	ignored = ls-files --other --ignored --exclude-standard
+	ignored = "!cd $PWD/$GIT_PREFIX ; git ls-files --other --ignored --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude --exclude-from=$HOME/.config/git/ignore"

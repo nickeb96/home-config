@@ -1,4 +1,7 @@
 /*
+!/.gitattributes
+!/aerc/
+/aerc/accounts.conf
 !/alacritty/
 /alacritty/local.toml
 /alacritty/colors/current.toml
@@ -13,7 +16,10 @@
 !/misc/
 !/pandoc/
 !/python/
+!/pip/
 !/rustfmt/
+!/ra-multiplex/
 !/ssh/
 /ssh/id_*
 !/tmux/
+!/wezterm/

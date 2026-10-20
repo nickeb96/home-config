@@ -1,3 +1,6 @@
 #!/bin/sh
 
-defaults write com.apple.SoftwareUpdate MajorOSUserNotificationDate -date "$(date -d "$(defaults read com.apple.SoftwareUpdate MajorOSUserNotificationDate) + 6 months")"
+defaults write com.apple.SoftwareUpdate MajorOSUserNotificationDate -date "$(date '+%F %T %z' -d 'now + 6 months')"
+
+defaults write com.apple.SoftwareUpdate UserNotificationDate -date "$(date '+%F %T %z' -d 'now + 6 months')"
+

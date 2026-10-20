@@ -1,0 +1,20 @@
+
+from: html
+to: markdown-header_attributes-fenced_divs
+
+# wrap: none
+# extract-media: media
+strip-comments: true
+
+
+# eol: nl
+# columns: 79
+
+# variables:
+#   mainfont: Helvetica Neue
+#   monofont: SourceCodePro
+#   geometry: margin=72pt
+
+# mainfont: SourceCodePro
+# geometry: margin=72pt
+

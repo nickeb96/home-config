@@ -1,0 +1,2 @@
+/git/base-config whitespace=space-before-tab,indent-with-non-tab,-tab-in-indent
+/aerc/signatures/*.txt whitespace=-blank-at-eol

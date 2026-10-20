@@ -29,8 +29,13 @@ import csv
 if (sys.version_info.major, sys.version_info.minor) >= (3, 11):
     import tomllib  # tomllib introduced in Python 3.11
 
-import time
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, date, time, timedelta, timezone
+from zoneinfo import ZoneInfo
+
+try:
+    import polars as pl
+except ImportError:
+    pass
 
 os.environ["PYTHON_COLORS"] = "0"
 

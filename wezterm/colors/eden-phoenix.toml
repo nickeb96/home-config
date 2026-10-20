@@ -1,0 +1,48 @@
+[colors]
+foreground = "#ffe7d9"
+background = "#12171d"
+
+ansi = [
+  "#2c2f33", # black
+  "#ff5a55", # red
+  "#abeb91", # green
+  "#fce97d", # yellow
+  "#82c1ff", # blue
+  "#b354f7", # magenta
+  "#31d3d3", # cyan
+  "#ede3d6", # white
+]
+
+brights = [
+  "#4c555e", # black
+  "#ff9794", # red
+  "#c9e6be", # green
+  "#ffffb5", # yellow
+  "#baddff", # blue
+  "#fca7e3", # magenta
+  "#a9ebeb", # cyan
+  "#ffffff", # white
+]
+
+
+cursor_bg = "#a5a2a2"
+cursor_border = "#a5a2a2"
+cursor_fg = "#090300"
+selection_bg = "#a5a2a2"
+selection_fg = "#090300"
+
+[colors.indexed]
+16 = "#e8bbd0"
+17 = "#cdab53"
+18 = "#3a3432"
+19 = "#4a4543"
+20 = "#807d7c"
+21 = "#d6d5d4"
+
+[metadata]
+aliases = ["eden-phoenix"]
+author = "me"
+name = "eden-phoenix"
+origin_url = "https://example.com"
+wezterm_version = "20220807-113146-c2fee766"
+

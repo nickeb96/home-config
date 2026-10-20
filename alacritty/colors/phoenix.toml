@@ -32,3 +32,29 @@ blue = "#baddff"
 cyan = "#a9ebeb"
 magenta = "#fca7e3"
 yellow = "#ffffb5"
+
+# [colors.search.matches]
+# foreground = ""
+# background = ""
+#
+# [colors.search.focused_match]
+# foreground = ""
+# background = ""
+#
+# [colors.hints]
+# start.foreground = ""
+# start.background = ""
+# end.foreground = ""
+# end.background = ""
+#
+# [colors.line_indicator]
+# foreground = ""
+# background = ""
+#
+# [footer_bar]
+# foreground = ""
+# background = ""
+#
+# [selection]
+# text = ""
+# background = ""

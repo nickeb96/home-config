@@ -45,6 +45,18 @@ command.args = [
 ]
 
 [[keyboard.bindings]]
+key = "]"
+mods = "Command"
+command.program = "sh"
+command.args = ["-c", "~/.local/bin/alacritty msg config 'font.size=25'"]
+
+[[keyboard.bindings]]
+key = "["
+mods = "Command"
+command.program = "sh"
+command.args = ["-c", "~/.local/bin/alacritty msg config 'font.size=15'"]
+
+[[keyboard.bindings]]
 key = "H"
 mods = "Command"
 action = "None"

@@ -1,4 +1,4 @@
-escape ^Ll
+escape ^Tt
 startup_message off
 altscreen on
 term screen-256color

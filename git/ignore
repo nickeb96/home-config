@@ -17,6 +17,6 @@ __pycache__/
 *.dylib
 *.rlib
 
-# other
+# local environment files
 .env
 .*.env
